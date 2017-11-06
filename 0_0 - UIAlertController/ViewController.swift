@@ -37,7 +37,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
 
     
-    func doAlertControllerDemo() {
+    @objc func doAlertControllerDemo() {
 
         var inputTextField: UITextField?;
         
