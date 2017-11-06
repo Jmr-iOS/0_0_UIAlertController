@@ -22,7 +22,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
 
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 
         self.doAlertControllerDemo();                               /* this can't be called in view did load! :(                    */
         
@@ -41,9 +41,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
         var inputTextField: UITextField?;
         
-        let passwordPrompt = UIAlertController(title: "Enter Password", message: "You have selected to enter your passwod.", preferredStyle: UIAlertControllerStyle.Alert);
+        let passwordPrompt = UIAlertController(title: "Enter Password", message: "You have selected to enter your passwod.", preferredStyle: UIAlertControllerStyle.alert);
         
-        passwordPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+        passwordPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             // Now do whatever you want with inputTextField (remember to unwrap the optional)
 
             let entryStr : String = (inputTextField?.text)! ;
@@ -54,19 +54,19 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         }));
 
         
-        passwordPrompt.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+        passwordPrompt.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             print("done");
         }));
 
         
-        passwordPrompt.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+        passwordPrompt.addTextField(configurationHandler: {(textField: UITextField!) in
             textField.placeholder = "Password"
-            textField.secureTextEntry = false       /* true here for pswd entry */
+            textField.isSecureTextEntry = false       /* true here for pswd entry */
             inputTextField = textField
         });
         
         
-        self.presentViewController(passwordPrompt, animated: true, completion: nil);
+        self.present(passwordPrompt, animated: true, completion: nil);
         
 
         return;
